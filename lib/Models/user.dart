@@ -4,6 +4,7 @@ class User{
   String? password;
   String? userId;
   String? cartId;
+  String? profilePicUrl;
 
 
   User({
@@ -12,6 +13,7 @@ class User{
     this.password,
     this.userId,
     this.cartId,
+    this.profilePicUrl,
 });
 
 }
