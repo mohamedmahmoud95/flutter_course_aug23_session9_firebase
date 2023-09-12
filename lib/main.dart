@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'View/Screens/landing_screen/landing_screen.dart';
+
 void main(){
   runApp(MyApp());
 }
@@ -19,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      home: LandingScreen(),
     );
   }
 }
