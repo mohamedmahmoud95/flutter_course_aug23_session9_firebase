@@ -11,6 +11,10 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController passwordTextEditingController = TextEditingController();
+
   bool passwordIsHidden = true;
   @override
   Widget build(BuildContext context) {
@@ -35,6 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: emailTextEditingController,
 
                   decoration: InputDecoration(
 
@@ -60,6 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: passwordTextEditingController,
                   obscureText: passwordIsHidden,
                   decoration: InputDecoration(
                     suffixIcon: InkWell(
@@ -118,7 +124,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                   TextButton(onPressed: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpScreen()));
-                  }, child: Text("Register",
+                  }, child: Text("Sign Up",
                     style: TextStyle(
                         fontSize: 18,
                         color: mainBlue
