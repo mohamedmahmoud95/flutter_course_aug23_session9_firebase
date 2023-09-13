@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "741427068413",
+    "project_id": "e-commerce-eced2",
+    "storage_bucket": "e-commerce-eced2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741427068413:android:8f6a96f918c277d66aed94",
+        "android_client_info": {
+          "package_name": "com.example.flutter_course_aug23_session9_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-Z1NyhMOqS5KKwkKPBkSKEXd7Ln7Vxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

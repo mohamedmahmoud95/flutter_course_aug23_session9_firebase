@@ -127,14 +127,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   }, child: Text("Sign Up",
                     style: TextStyle(
                         fontSize: 18,
-                        color: mainBlue
+                        color: mainBlue,
+                      fontWeight: FontWeight.w600
 
                     ),),),
                 ],
 
               )
-
-
             ],
           ),
         ),

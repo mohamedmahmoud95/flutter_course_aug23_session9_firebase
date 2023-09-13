@@ -58,6 +58,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
 
+                const SizedBox(height: 20,),
+
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
@@ -130,7 +132,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   onPressed: (){},
                   child: const Text("Sign Up", style: TextStyle(
-                      fontSize: 20
+                      fontSize: 20,
+
                   ),),
                 ),
 
@@ -146,10 +149,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                     TextButton(onPressed: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignInScreen()));
-                    }, child: Text("Sign in",
+                    }, child:  Text("Sign in",
                       style: TextStyle(
                           fontSize: 18,
-                          color: mainBlue
+                          color: mainBlue,
+                          fontWeight: FontWeight.w600
 
                       ),),),
                   ],
