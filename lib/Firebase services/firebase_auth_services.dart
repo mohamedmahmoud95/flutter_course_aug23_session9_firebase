@@ -82,6 +82,26 @@ class FirebaseAuthServices {
 
 //-------------------------------------------------------------------------//
 //Firebase service to sign in anonymously
+  Future<bool> signInAnonymously() async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
+
+      return true; // Successfully signed in anonymously
+    } catch (error) {
+      if (error is FirebaseAuthException) {
+        if (error.code == 'operation-not-allowed') {
+          debugPrint("Error: Anonymous accounts are not enabled.");
+        } else {
+          debugPrint("Error signing in anonymously: ${error.code}");
+        }
+      } else {
+        // Handling other exceptions that are not FirebaseAuthException
+        debugPrint("Error signing in anonymously: $error");
+      }
+      return false; // Return false to indicate sign in failure
+    }
+  }
+
 
 
 //-------------------------------------------------------------------------//
