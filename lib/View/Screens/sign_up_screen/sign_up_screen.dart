@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_course_aug23_session9_firebase/Firebase%20services/firebase_auth_services.dart';
 
 import '../../constants/project_colors.dart';
+import '../home_screen/home_screen.dart';
 import '../sign_in_screen/sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -11,11 +13,48 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  FirebaseAuthServices firebaseAuthServices = FirebaseAuthServices();
   TextEditingController fullNameTextEditingController = TextEditingController();
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
 
   bool passwordIsHidden = true;
+
+
+  bool validateEmail()
+  {
+    bool emailIsValid = false;
+    if (emailTextEditingController.text.isEmpty)
+    {
+      debugPrint("email field is empty");
+    }
+    else if (!(emailTextEditingController.text.contains('.') && emailTextEditingController.text.contains('@')) || emailTextEditingController.text.length < 7){
+      debugPrint("Invalid email");
+    }
+    else
+    {
+      emailIsValid = true;
+    }
+    return emailIsValid;
+
+  }
+
+  bool validatePassword()
+  {
+    bool passwordIsValid = false;
+    if (passwordTextEditingController.text.isEmpty)
+    {
+      debugPrint("password field is empty");
+    }
+    else if (passwordTextEditingController.text.length < 6){
+      debugPrint("password must be at least 6 characters");
+    }
+    else
+    {
+      passwordIsValid = true;
+    }
+    return passwordIsValid;
+  }
     @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -130,7 +169,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                   ),
-                  onPressed: (){},
+                  onPressed: (){
+                    if (validateEmail() == true && validatePassword() == true)
+                    {
+                          () async {
+                        bool signUpResult = await firebaseAuthServices.signUp(
+                            emailTextEditingController.text,
+                            passwordTextEditingController.text);
+
+                        if (signUpResult == true) {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeScreen()));
+                        }
+                      };
+                    }
+                  },
                   child: const Text("Sign Up", style: TextStyle(
                       fontSize: 20,
 
