@@ -169,10 +169,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                   ),
-                  onPressed: (){
+                  onPressed: () async {
                     if (validateEmail() == true && validatePassword() == true)
                     {
-                          () async {
+
                         bool signUpResult = await firebaseAuthServices.signUp(
                             emailTextEditingController.text,
                             passwordTextEditingController.text);
@@ -181,8 +181,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeScreen()));
                         }
                       };
-                    }
-                  },
+                    },
+
                   child: const Text("Sign Up", style: TextStyle(
                       fontSize: 20,
 

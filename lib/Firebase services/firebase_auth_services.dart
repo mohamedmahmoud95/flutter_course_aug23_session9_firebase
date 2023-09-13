@@ -18,7 +18,7 @@ class FirebaseAuthServices {
       UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(
           email: email, password: password);
-      return userCredential.credential != null;
+      return userCredential.user?.uid != null;
     }
     catch (error) {
       debugPrint("Error signing in: $error");
@@ -39,7 +39,8 @@ class FirebaseAuthServices {
     try {
       UserCredential userCredential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
-      return userCredential.credential != null;
+
+      return userCredential.user?.uid != null;
     }
     catch(error)
     {
@@ -69,6 +70,7 @@ class FirebaseAuthServices {
 
 
 
+
 //-------------------------------------------------------------------------//
 //Firebase service to sign in with email link
 
@@ -85,8 +87,8 @@ class FirebaseAuthServices {
   Future<bool> signInAnonymously() async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
+      return userCredential.user?.uid != null;
 
-      return true; // Successfully signed in anonymously
     } catch (error) {
       if (error is FirebaseAuthException) {
         if (error.code == 'operation-not-allowed') {

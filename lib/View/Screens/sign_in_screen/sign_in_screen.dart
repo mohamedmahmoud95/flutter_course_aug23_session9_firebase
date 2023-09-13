@@ -146,19 +146,21 @@ class _SignInScreenState extends State<SignInScreen> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),
-                onPressed: (){
+                onPressed: ()async{
                   if (validateEmail() == true && validatePassword() == true)
                     {
-                      () async {
+                      debugPrint("trying to sign in");
                         bool signInResult = await firebaseAuthServices.signIn(
                             emailTextEditingController.text,
                             passwordTextEditingController.text);
 
                         if (signInResult == true) {
+                          debugPrint("signed in");
+
                           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen()));
                         }
                       };
-                    }
+
                 },
                 child: const Text("Sign in", style: TextStyle(
                     fontSize: 20
@@ -176,14 +178,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   minimumSize: const Size(200, 40),
                   foregroundColor: bluishGreen,
                 ),
-                  onPressed: (){
-                        () async {
+                  onPressed: ()async{
                       bool signInResult = await firebaseAuthServices.signInAnonymously();
 
                       if (signInResult == true) {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen()));
                       }
-                    };
+
                   },
                   child: const Text("Sign in anonymously",
                   style: TextStyle(
