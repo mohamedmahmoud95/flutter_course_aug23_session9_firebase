@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           firebaseAuthServices.logOut();
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LandingScreen()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LandingScreen()));
         },
       ),
     );
